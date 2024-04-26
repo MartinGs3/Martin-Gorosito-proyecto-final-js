@@ -1,0 +1,89 @@
+footer {
+    background-color: nth($paleta-colores, 3);
+    width: 100%;
+    height: 100%;
+    margin-top: 3rem;
+
+    @include flex (flex, column, center, center); div {
+        display: inline-block;
+        margin: 40px 80px 40px 40px;
+        text-align: left;
+
+        .logo {
+            img {
+                width: 150px;
+                height: 90px;
+                vertical-align: baseline;
+            }
+        }
+
+        .contacto {
+            h3, h4 {
+                @extend %h3-54-footer;
+            }
+
+            .whatsapp {
+                display: block;
+                padding: 0;
+                margin: 0;
+
+                img {
+                    width: 15px;
+                    height: 15px;
+                }
+
+                a {
+                    text-decoration: none;
+
+                    &:visited {
+                        color: nth($paleta-colores, 6);
+                    }
+
+                    p {
+                        display: inline;
+                        color: nth($paleta-colores, 6);
+                    }
+                }
+            }
+
+            .email {
+                @extend .whatsapp;
+            }
+        }
+
+        .Tratamientos {
+            h3, h4 {
+                @extend %h3-54-footer;
+            }
+
+            .link-facial {
+                display: block;
+                text-decoration: none;
+                color: nth($paleta-colores, 6);
+
+                &:visited {
+                    color: nth($paleta-colores, 6);
+                }
+            }
+
+            .link-corporal {
+                @extend .link-facial;
+            }
+        }
+
+        .direccion {
+            h3, h4 {
+                @extend %h3-54-footer;
+            }
+
+            a {
+                text-decoration: none;
+                color: nth($paleta-colores, 6);
+
+                &:visited {
+                    color: nth($paleta-colores, 6);
+                }
+            }
+        }
+    }
+}

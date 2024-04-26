@@ -1,0 +1,60 @@
+/*------RESET------*/
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-family: 'Lora', serif;
+}
+
+/*---------MAIN-------*/
+/*-------Carousel-------*/
+
+.slide img {
+    height: 60vh;
+}
+
+.carousel-item p {
+    font-size: 20px;
+    color: black;
+}
+
+/*----boton----*/
+.botones-de-enlace {
+    background-color: rgb(255, 111, 190);
+    color: rgb(255, 255, 255);
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: 1px solid black;
+    text-decoration: none;
+    transition: background-color 300ms;
+
+    &:hover {
+        background-color: rgb(255, 255, 255);
+        color: rgb(255, 111, 190);
+    }
+
+    &:active {
+        background-color: rgb(240, 240, 240);
+    }
+}
+
+.boton{
+    background-color: rgb(255, 111, 190);
+    color: rgb(255, 255, 255);
+    padding: 5px 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    border-radius: 15px;
+    border: 1px solid black;
+    text-decoration: none;
+    transition: background-color 300ms;
+}
+

@@ -1,0 +1,74 @@
+$paleta-colores: rgb(255, 111, 190),
+    rgb(255, 185, 240),
+    #f5f5dc,
+    rgb(255, 255, 255),
+    rgb(240, 240, 240),
+    rgb(0, 0, 0);
+
+$font-size: 50px,
+    40px,
+    35px,
+    32px,
+    25px,
+    24px,
+    20px,
+    18px,
+    16px,
+    15px,
+    13px,
+    12px;
+
+$font-size-rem: 1.5rem;
+
+$border-1: (
+    border: 1px solid nth($paleta-colores, 6)
+);
+
+%grid-fotos {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    transition-property: border;
+    transition-duration: 200ms;
+
+    &:hover {
+        border: 4px solid nth($paleta-colores , 6);
+    }
+}
+
+%h3-54-footer {
+    font-size: nth($font-size, 5);
+    margin-bottom: 15px;
+}
+
+@mixin flex-menu ($flex, $direction, $align){
+    display: $flex;
+    flex-direction: $direction;
+    align-items: $align;
+}
+
+@mixin flex ($flex, $direction, $justify, $align) {
+    display: $flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+@mixin flex-column ($flex, $direction) {
+    display: $flex;
+    flex-direction: $direction;
+}
+
+@mixin flex-justify ($flex, $justify) {
+    display: $flex;
+    justify-content: $justify;
+}
+
+@mixin slide($name, $duration, $timing-fuction, $direction, $delay, $iteration-count) {
+    animation-name: $name;
+    animation-duration: $duration;
+    animation-timing-function: $timing-fuction;
+    animation-direction: $direction;
+    animation-delay: $delay;
+    animation-iteration-count: $iteration-count;
+}

@@ -1,0 +1,305 @@
+@media screen and (max-width:1290px) {
+
+    //grid-faciales-corporales
+    section {
+        .grid-container-body {
+            .imagenes {
+                align-items: center;
+
+                img {
+                    width: 200px;
+                    height: 200px;
+                    object-fit: cover;
+                    margin: 0 auto;
+                }
+            }
+
+            .text-grid {
+                h3 {
+                    font-size: nth($font-size, 9);
+                }
+
+                p {
+                    font-size: nth($font-size, 12);
+                }
+            }
+        }
+    }
+
+    //mapa
+    .main-contact {
+        @include flex-column (flex, column);
+
+        .right-content {
+            margin-left: 11rem;
+
+            h2 {
+                text-align: start;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:1050px) {
+    footer {
+        div {
+            margin: 20px auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+}
+
+@media screen and (max-width:930px) {
+    header {
+        flex-direction: column;
+        height: 200px;
+    }
+
+    //galeria
+    section {
+        .grid-container-gallery {
+            grid-template-columns: repeat(2, 1fr);
+            grid-auto-rows: 300px;
+
+            .grid-items {
+                grid-column: span 1;
+                grid-row: span 1;
+
+                &.foto-persona {
+                    display: none;
+                }
+            }
+
+            .img-9 {
+                display: none;
+            }
+        }
+    }
+
+    //bloque-facial-corporal-tienda
+    .block-faciales {
+        height: 100%;
+        width: 100%;
+
+        article {
+            h2 {
+                padding: 0;
+                font-size: nth($font-size, 4);
+            }
+        }
+    }
+
+    //pagina-contacto
+    .main-contact {
+        .title-contact-1 {
+            .title-contact {
+                margin: 0;
+
+                h2 {
+                    font-size: nth($font-size, 3);
+                }
+
+                h3 {
+                    font-size: nth($font-size, 8);
+                }
+
+                p {
+                    font-size: nth($font-size, 10);
+                    margin-bottom: 20px;
+                }
+            }
+
+            form {
+                margin: 0;
+
+                .name,
+                .email,
+                .phone,
+                .consulta {
+                    font-size: nth($font-size, 11);
+                }
+            }
+        }
+
+        .right-content {
+            width: 100%;
+            margin: 3rem auto;
+
+            h2 {
+                display: none;
+            }
+
+            iframe {
+                width: 100%;
+                height: 200px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:730px) {
+
+    //bloque-facial-corporal
+    .block-faciales {
+        article {
+            h2 {
+                font-size: nth($font-size, 4);
+            }
+        }
+    }
+
+    //grid-body-faciales-corporales
+    section {
+        .grid-container-body {
+            grid-template-columns: 1fr;
+            grid-auto-rows: auto;
+
+            .imagenes {
+                display: none;
+            }
+
+            .text-grid {
+                grid-column: span 1;
+            }
+        }
+    }
+
+    form {
+        .consulta {
+            .fijo {
+                width: 300px;
+                height: 100px;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:570px) {
+
+    //header
+    header {
+        @include flex(flex, row, space-between, center);
+
+        .logo-nav {
+            display: flex;
+        }
+
+        .abrir-menu,
+        .cerrar-menu {
+            display: block;
+            border: 0;
+            font-size: 1.25rem;
+            background-color: transparent;
+            cursor: pointer;
+        }
+
+        .abrir-menu {
+            color: black;
+        }
+
+        .cerrar-menu {
+            color: white;
+        }
+
+        nav {
+            @include flex-menu(flex, column, end);
+            gap: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background-color: nth($paleta-colores , 1);
+            padding: 2rem;
+            box-shadow: 0 0 0 100vmax rgba(0, 0, 0, .5);
+            z-index: 3;
+            animation: slide-nav, 2s, linear;
+            transition: 0.7s;
+
+            ul {
+                flex-direction: column;
+                align-items: end;
+
+                li a {
+                    color: #ecececec;
+                }
+            }
+        }
+
+        @keyframes slide-left {
+            from {
+                margin-left: 100%;
+                width: 300%;
+            }
+
+            to {
+                margin: 0;
+                width: 100%;
+            }
+        }
+
+        .visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+    }
+
+    //promos
+    section {
+        .products {
+            @include flex-column (flex, column);
+
+            div {
+                width: 204px;
+                height: 370px;
+                margin: 30px auto;
+
+                img {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+        }
+    }
+
+    //galeria
+    section {
+        .grid-container-gallery {
+            grid-template-columns: repeat(1, 1fr);
+            grid-auto-rows: 200px;
+            row-gap: 25px;
+
+            .grid-items {
+                &.img-8 {
+                    display: none;
+                }
+            }
+        }
+    }
+
+    //bloque-facial-corporal-tienda
+    .block-faciales {
+        article {
+            h2 {
+                font-size: nth($font-size, 6);
+            }
+        }
+    }
+
+    //grid-body-facial-corporal
+    section {
+        .grid-container-body {
+            margin: 20px auto;
+
+            .text-grid {
+                h3 {
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
