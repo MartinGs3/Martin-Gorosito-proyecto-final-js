@@ -101,12 +101,12 @@ rowProducts && rowProducts.addEventListener('click', e => {
 
 const form = document.getElementById("formulario-contacto");
 
-form.addEventListener("submit", async function(event) {
+form.addEventListener("submit", function(event) {
     event.preventDefault();
-    await enviarFormulario();
+    enviarFormulario();
 });
 
-async function enviarFormulario() {
+function enviarFormulario() {
     const nombre = form.querySelector("#nombre").value;
     const email = form.querySelector("#email").value;
     const telefono = form.querySelector("#tel").value;
@@ -121,59 +121,36 @@ async function enviarFormulario() {
 
     const formDataJSON = JSON.stringify(formData);
 
-    const requestOptions = {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: formDataJSON
+    const url = 'http://127.0.0.1:5500/pages/contacto.html'; 
+
+    
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', url, true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                const response = JSON.parse(xhr.responseText);
+                console.log('Respuesta del servidor:', response);
+                mostrarNotificacion('¡Formulario enviado correctamente!');
+            } else {
+                console.error('Error al enviar el formulario:', xhr.statusText);
+                mostrarNotificacion('Error al enviar el formulario', 'error');
+                
+            }
+        }
     };
 
-    try {
-        const response = await fetch("http://127.0.0.1:5500/pages/contacto.html", requestOptions);
+    xhr.send(formDataJSON);
+}
 
-        if (!response.ok) {
-            throw new Error('Error al enviar los datos del formulario');
-        }
-
-        const data = await response.json();
-
-        localStorage.setItem("formData", formDataJSON);
-
-        Swal.fire({
-            title: '¡Enviado!',
-            text: 'Los datos del formulario se han enviado con éxito',
-            icon: 'success',
-            confirmButtonText: 'Aceptar'
-        }).then(() => {
-            form.reset();
-        });
-    } catch (error) {
-        console.error('Error:', error);
-
-        Swal.fire({
-            title: 'Error',
-            text: 'Hubo un error al enviar los datos del formulario',
-            icon: 'error',
-            confirmButtonText: 'Aceptar'
-        });
-    }
-};
-
-form.addEventListener("reset", async function(event) {
-    event.preventDefault();
-    await restablecerFormulario();
-});
-
-async function restablecerFormulario() {
-    const result = await Swal.fire({
-        title: '¿Estás seguro?',
-        text: '¿Quieres restablecer el formulario?',
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Sí',
-        cancelButtonText: 'Cancelar'
-    });
-
-    result.isConfirmed && form.reset();
+function mostrarNotificacion(mensaje, tipo) {
+    Toastify({
+        text: mensaje,
+        duration: 3000,
+        close: true,
+        gravity: "top",
+        backgroundColor: tipo === 'success' ? "green" : "red",
+    }).showToast();
 }
